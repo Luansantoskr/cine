@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Index </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Hege Refsnes">
+    <link rel="stylesheet" href="css\Index.css">
+
+</head>
+
+<body>
+    <img src="img/Logo.JPEG" alt="Logo" style="width:800px;">
+    <button class="button"> <a class="button" href="Login.html"> Login </a> </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="button"> <a class="button" href="Cadastro1.html"> Cadastre-se </a> </button>
+    <ul><br>
+        <li><a class="active" href="Index1.html"> Home </a></li>
+        <li><a href="Index2.html"> Sobre os autores </a></li>
+        <li><a href="Index2.html"> O que é cinelândia? </a></li>
+        <li><a href="Index2.html"> Ajuda </a></li>
+        <br><br>
+    </ul><br><br>
+    <div class=container>
+            <div id="app"></div>
+        <ul>
+            <li v-for="usuario in usuarios"><a :href="'Conta1.html?id='+usuario.id">Minha conta {{usuario.username}}</a></li>
+        </ul>
+    </div><br><br>
+
+    <div id="divBusca">
+        <input type="text" id="txtBusca" placeholder="Buscar..." />
+        <button id="btnBusca"><a href="busca.html"> Buscar </a></button>
+    </div><br><br><br><br><br><br>
+
+    <img src="img\xmen.jpg" alt="" height="600" width="960"><br><br><br><br>
+    <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    url: "http://localhost:8080/rest_persistence/api/users",
+                    usuarios: []
+                },
+                created() {
+                    vm = this;
+                    axios.get(this.url).then(function (r) {
+                        if(r.data.user.length > 1) {
+                            vm.usuarios = r.data.user;    
+                        } else {
+                            vm.usuarios = r.data;
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            });
+        </script>
+
+    <table border="0">
+        <tr>
+            <th><a href="Termo.html"> Termos de serviço </a></th>
+            <th><a href="Politica.html"> Privacidade </a></th>
+            <th><a href=""> Equipe </a></th>
+        </tr>
+    </table>
+
+    <footer>
+        <p>Trabalho de Luan Santos e Ronald Bonfim</p>
+        <p>Contatos para informações: <a
+                href="https://mail.google.com/mail/ca/u/0/#inbox?compose=GTvVlcSKkkHDDGbJmpZGSHNbtMfSmRnkvMgFlQhTvVxdFwrflHbGJWLlgSKphWkphmScLLGWhRXNx">
+                cinelandialr@gmail.com</a>.</p>
+        <h3 id="contatos" class="cor-tres"> Contatos </h3>
+        <a href="https://www.facebook.com/Cinelandia-625870567841308/?view_public_for=625870567841308"> <img
+                src="img\facebook.PNG" alt="" width="40" height="40"> </a>
+        <a href="https://www.instagram.com/cinelandialr/"> <img src="img\instagram.PNG" alt="" width="40" height="40">
+        </a>
+        <a href="https://twitter.com/cinelndia6"> <img src="img\twitterP.PNG" alt="" width="40" height="40"> </a>
+
+
+    </footer>
+
+</body>
+
+</html>
