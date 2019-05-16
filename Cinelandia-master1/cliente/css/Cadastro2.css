@@ -1,0 +1,86 @@
+.pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: brown;
+}
+
+.pagination a.active {
+    background-color: rgb(146, 17, 17);
+    color: white;
+  }
+
+button{
+    box-align: center;
+}
+
+a:link {color: black; text-decoration: none;
+    background-color: transparent
+}
+
+h2{
+    text-align: center;
+}
+
+.button {
+    -webkit-transition-duration: inherit;
+    transition-duration: 0ms;
+    transition-property: all;
+  }
+  
+  .button:hover {
+    background-color: rgb(155, 33, 33);
+    color: white;
+  }
+
+  .button:focus{
+    background-color: rgb(155, 33, 33);
+    color: white;
+  }
+
+  footer {
+    background-color: rgb(155, 37, 37);
+    text-align: center;
+    padding: 10px;
+}
+
+a:visited {
+    color: black;
+  }
+
+  IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(155, 33, 33);
+  vertical-align: center;
+}
+
+li {
+  float: left;
+  vertical-align: center;
+}
+
+li a {
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(170, 70, 70);
+}

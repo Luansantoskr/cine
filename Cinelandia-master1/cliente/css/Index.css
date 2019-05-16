@@ -1,0 +1,179 @@
+a:link {
+  color: black;
+  text-decoration: none;
+  background-color: transparent
+}
+
+table {
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  text-indent: 30px;
+}
+
+.cor-um {
+  color: black;
+  text-align: left;
+}
+
+.cor-dois {
+  color: black;
+}
+
+.cor-tres {
+  color: black;
+}
+
+.button {
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  font-size: 16px;
+  background-color: rgb(179, 43, 31);
+  float: right;
+}
+
+
+.cor-quatro {
+  text-align: center;
+}
+
+footer {
+  background-color: rgb(179, 43, 31);
+  text-align: center;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+}
+
+a:visited {
+  color: black;
+}
+
+p {
+  text-align: center;
+}
+
+IMG.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#divBusca {
+  background-color: #e0eeee;
+  border: solid 2px rgb(179, 43, 31);
+  border-radius: 10px;
+  width: 300px;
+  height: 32px;
+}
+
+#txtBusca {
+  float: left;
+  background-color: transparent;
+  padding-left: 5px;
+  font-size: 18px;
+  border: none;
+  height: 32px;
+  width: 191px;
+}
+
+#btnBusca {
+  border: none;
+  float: left;
+  height: 32px;
+  border-radius: 0 7px 7px 0;
+  width: 104px;
+  font-weight: bold;
+  background: rgb(179, 43, 31);
+}
+
+#divBusca img {
+  float: left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(179, 43, 31);
+  vertical-align: center;
+}
+
+li {
+  float: left;
+  vertical-align: center;
+}
+
+li a {
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(170, 70, 70);
+}
+
+form.solid {
+  border-style: solid;
+}
+
+h3{
+  text-align: center;
+}
+
+div.container4 {
+  height: 10em;
+  position: relative 
+}
+
+input{
+  color: black;
+}
+
+form {
+  text-align: center;
+  border: 2cm;
+  border: solid black;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 320px;
+  margin-left: 80px;
+  background-color: rgb(179, 43, 31);
+  color: rgb(255, 255, 255);
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  background-color: brown;
+}
+
+.pagination a.active {
+  background-color: rgb(146, 17, 17);
+  color: white;
+}
+
+h2{
+  text-align: center;
+}
+
+IMG.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
