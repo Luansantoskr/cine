@@ -12,15 +12,16 @@
     <script src="js/vue.js"></script>
     <script src="js/vue-router.js"></script>
     <script src="js/axios.min.js"></script>
+    <script src="js/vue-session.js"></script>
 </head>
 
 <body>
     <ul><br>
         <img class="displayed" src="img/Logo.JPEG" alt="Logo" style="width:400px;">
-        <li><a class="active" href="Index1.html"> Home </a></li>
-        <li><a href="Index2.html"> Sobre os autores </a></li>
-        <li><a href="Index2.html"> O que é cinelândia? </a></li>
-        <li><a href="Index2.html"> Ajuda </a></li>
+        <li><a class="active" href="index.html"> Home </a></li>
+        <li><a href="dados.html"> Sobre os autores </a></li>
+        <li><a href="dados.html"> O que é cinelândia? </a></li>
+        <li><a href="dados.html"> Ajuda </a></li>
         <br><br>
     </ul><br><br>
 
@@ -34,7 +35,7 @@
                     <dt v-for="error in errors">{{ error }}</dt>
                 </dl>
             </p>
-            <form action="Conta1.html">
+            <form action="index.html">
                 <div class="form-group">
                     <label for="username">Usuário: </label>
                     <input class="form-control" type="text" v-model="username" placeholder="Seu nome" minlength="6"
@@ -75,9 +76,17 @@
                 username: "",
                 password: "",
                 email: "",
-                regiao: ""
+                regiao: "",
+                flag: false
             },
             methods: {
+                created() {
+                    if (!this.$session.exists()) {
+                        window.location.replace("/");
+                    } else {
+                        this.flag = true;
+                    }
+                },
                 checkForm: function (r) {
                     erroStatus = false;
 
@@ -111,12 +120,20 @@
                             }
                         }
                     ).then(function (r) {
-                        console.log(r.data);
-                        window.location.replace("Conta1.html");
+                            if (r.status == 200) {
+                                console.log(r.data);
+                                window.location.replace("index.html");
+                            }
                     }).catch(function (error) {
                         console.log(erro);
+                        if(error.response.status == 400) {
+                                vm.error = "Não foi possível inserir !!";
+                            } 
                     });
-                }
+                },
+                handleFileUpload() {
+                        this.file = this.$refs.file.files[0];
+                    }
             }
         });
     </script>

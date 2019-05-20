@@ -19,11 +19,11 @@
 <body>
         <ul><br>
             <img class="displayed" src="img/Logo.JPEG" alt="Logo" style="width:400px;"></img>
-            <li><a class="active" href="Index1.html"> Home </a></li>
-            <li><a href="Index2.html"> Sobre os autores </a></li>
-            <li><a href="Index2.html"> O que é cinelândia? </a></li>
-            <li><a href="Index2.html"> Ajuda </a></li>
-            <li><a href="conta.html"> Minha conta </a></li>
+            <li><a class="active" href="index.html"> Home </a></li>
+            <li><a href="dados.html"> Sobre os autores </a></li>
+            <li><a href="dados.html"> O que é cinelândia? </a></li>
+            <li><a href="dados.html"> Ajuda </a></li>
+            <li><a href="Conta1.html"> Minha conta </a></li>
             <br><br>
         </ul><br><br>
         <div class=container>
@@ -33,43 +33,12 @@
                         <p>{{usuario.id}}</p>
                         <p>{{usuario.username}}</p>
                         <p>{{usuario.password}}</p>
-                        <img :src="'uploads/'+usuario.id+'?'+new Date().getTime()" width="200" height="200"><br><br>
-                        <a class="btn btn-primary" :href="'user-edit.html?id='+usuario.id">Editar</a>
+                        <button><a class="btn btn-primary" :href="'Edit.html?id='+usuario.id">Editar</a></button>
                         <button class="btn btn-danger" type="button" @click="deleteUser">Excluir</button>
                     </div>
                 </div>
+        </div>
         
-                <script>
-                    var app = new Vue({
-                        el: "#app",
-                        data: {
-                            url: "http://localhost:8080/rest_persistence/api/users",
-                            usuario: {},
-                            flag: false,
-                        },
-                        created() {
-                            var currentUrl = window.location.href;
-                            var id = new URL(currentUrl).searchParams.get("id");
-                            vm = this;
-                            axios.get(this.url + "/" + id).then(function (r) {
-                                vm.usuario = r.data;
-                                vm.flag = true;
-                            }).catch(function (error) {
-                                console.log(error);
-                            });
-                        },
-                        methods: {
-                            deleteUser() {
-                                axios.delete(this.url + "/" + this.usuario.id).then(function (r) {
-                                    console.log(r);
-                                    window.location.replace('Index1.html')
-                                }).catch(function (error) {
-                                    console.log(error);
-                                });
-                            }
-                        }
-                    });
-                </script>
         <a href="busca.html"><img src="img\busca.jpg" alt="ir para busca"></a>
         <a href="Index1.html"><img src="img\nav.jpg" alt="Navegar"></a>
     
@@ -95,6 +64,38 @@
     
     
         </footer>
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    url: "http://localhost:8080/rest_persistence/api/users",
+                    usuario: {},
+                    flag: false,
+                },
+                created() {
+                    var currentUrl = window.location.href;
+                    var id = new URL(currentUrl).searchParams.get("id");
+                    vm = this;
+                    axios.get(this.url + "/" + id).then(function (r) {
+                        vm.usuario = r.data;
+                        vm.flag = true;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                },
+                methods: {
+                    deleteUser() {
+                        axios.delete(this.url + "/" + this.usuario.id).then(function (r) {
+                            console.log(r);
+                            window.location.replace('index.html')
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
+            });
+        </script>
 </body>
 
 </html>

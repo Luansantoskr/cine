@@ -8,6 +8,13 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Hege Refsnes">
     <link rel="stylesheet" href="css\Index.css">
+    <script src="js/vue-session.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.min.js"></script>
 
 </head>
 
@@ -24,40 +31,16 @@
         <br><br>
     </ul><br><br>
     <div class=container>
-        <div id="app"></div>
-        <ul>
-            <li v-for="usuario in usuarios"><a :href="'Conta1.html?id='+usuario.id">Minha conta {{usuario.username}}</a>
-            </li>
-        </ul>
-    </div><br><br>
-
-    <div id="divBusca">
-        <input type="text" id="txtBusca" placeholder="Buscar..." />
-        <button id="btnBusca"><a href="busca.html"> Buscar </a></button>
-    </div><br><br><br><br><br><br>
-
-    <img src="img\xmen.jpg" alt="" height="600" width="960"><br><br><br><br>
-    <script>
-        var app = new Vue({
-            el: "#app",
-            data: {
-                url: "http://localhost:8080/rest_persistence/api/users",
-                usuarios: []
-            },
-            created() {
-                vm = this;
-                axios.get(this.url).then(function (r) {
-                    if (r.data.user.length > 1) {
-                        vm.usuarios = r.data.user;
-                    } else {
-                        vm.usuarios = r.data;
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-        });
-    </script>
+        <div id="app">
+            <a href="cadastro1.html" class="btn btn-primary">Inserir</a>
+            <h3>Lista de Usuários</h3>
+            <ul>
+                <li v-for="usuario in usuarios">
+                    <a :href="'Conta1.html?id='+usuario.id">{{usuario.username}}</a>
+                </li>
+            </ul>            
+        </div>
+        
 
     <table border="0">
         <tr>
@@ -83,6 +66,28 @@
 
 
     </footer>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/users",
+                usuarios: []
+            },
+            created() {
+                vm = this;
+                axios.get(this.url).then(function (r) {
+                    if(r.data.user.length > 1) {
+                        vm.usuarios = r.data.user;    
+                    } else {
+                        vm.usuarios = r.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        });
+    </script>
 
 </body>
 
