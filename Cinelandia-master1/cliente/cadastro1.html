@@ -29,8 +29,7 @@
 
     <div class=container>
         <div id="app">
-            <p v-if="erroStatus">
-                <p>Por favor, corrija o(s) seguinte(s) erro(s):</p>
+            <p v-if="erroStatu1s">
                 <dl>
                     <dt v-for="error in errors">{{ error }}</dt>
                 </dl>
@@ -87,7 +86,7 @@
                         this.flag = true;
                     }
                 },
-                checkForm: function (r) {
+                checkForm: function (e) {
                     erroStatus = false;
 
                     if (this.username && this.email && this.password) {
@@ -131,9 +130,6 @@
                             } 
                     });
                 },
-                handleFileUpload() {
-                        this.file = this.$refs.file.files[0];
-                    }
             }
         });
     </script>

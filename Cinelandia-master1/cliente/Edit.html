@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="username">Username: </label>
                     <input class="form-control" type="text" v-model="usuario.username" :value="usuario.username">
-                </div>
+                </div><br>
                 <div class="form-group">
                     <label for="password">Password: </label>
                     <input class="form-control" type="password" v-model="usuario.password" :value="usuario.password">
@@ -40,58 +40,11 @@
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input class="form-control" type="email" v-model="usuario.email" :value="usuario.email">
-                </div>
+                </div><br>
                 <button class="btn btn-primary" type="button" @click="submit">Atualizar</button>
             </div>
-        </div>
-
-        <script>
-            var app = new Vue({
-                el: "#app",
-                data: {
-                    url: "http://localhost:8080/rest_persistence/api/users",
-                    usuario: {},
-                    file: null,
-                    flag: false
-                },
-                created() {
-                    var currentUrl = window.location.href;
-                    var id = new URL(currentUrl).searchParams.get("id");
-                    vm = this;
-                    axios.get(this.url + "/" + id).then(function (r) {
-                        vm.usuario = r.data;
-                        console.log(vm.usuario);
-                        vm.flag = true;
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                },
-                methods: {
-                    submit() {
-                        let formData = new FormData();
-                        formData.append('username', this.usuario.username);
-                        formData.append('password', this.usuario.password);
-                        formData.append('email', this.email);
-                        axios.put(this.url + "/" + this.usuario.id,
-                            formData,
-                            {
-                                headers: {
-                                    'Content-Type': 'multipart/form-data'
-                                }
-                            }
-                        ).then(function (r) {
-                            console.log(r.data);
-                            window.location.replace("index.html");
-                        }).catch(function (error) {
-                            console.log(erro);
-                        });
-                    },
-                    handleFileUpload() {
-                        this.file = this.$refs.file.files[0];
-                    }
-                }
-            });
-        </script>
+        </div><br><br>
+        
         <table border="0">
             <tr>
                 <th><a href="Termo.html"> Termos de serviço </a></th>
@@ -113,8 +66,51 @@
             </a>
             <a href="https://twitter.com/cinelndia6"> <img src="img\twitterP.PNG" alt="" width="40" height="40"> </a>
 
-
         </footer>
+        <script>
+                var app = new Vue({
+                    el: "#app",
+                    data: {
+                        url: "http://localhost:8080/rest_persistence/api/users",
+                        usuario: {},
+                        file: null,
+                        flag: false
+                    },
+                    created() {
+                        var currentUrl = window.location.href;
+                        var id = new URL(currentUrl).searchParams.get("id");
+                        vm = this;
+                        axios.get(this.url + "/" + id).then(function (r) {
+                            vm.usuario = r.data;
+                            console.log(vm.usuario);
+                            vm.flag = true;
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    },
+                    methods: {
+                        submit() {
+                            let formData = new FormData();
+                            formData.append('username', this.usuario.username);
+                            formData.append('password', this.usuario.password);
+                            formData.append('email', this.email);
+                            axios.put(this.url + "/" + this.usuario.id,
+                                formData,
+                                {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data'
+                                    }
+                                }
+                            ).then(function (r) {
+                                console.log(r.data);
+                                window.location.replace("index.html");
+                            }).catch(function (error) {
+                                console.log(erro);
+                            });
+                        },
+                    }
+                });
+            </script>
 </body>
 
 </html>
