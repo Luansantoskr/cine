@@ -25,15 +25,18 @@
     <li><a href="dados.html"> Sobre os autores </a></li>
     <li><a href="dados.html"> O que é cinelândia? </a></li>
     <li><a href="dados.html"> Ajuda </a></li>
+    <li><a href="Conta.html"> Minha conta </a></li>
     <br><br>
   </ul><br><br>
 
-  <div class=container>
+  <div class="form"><br><br>
     <div id="app">
       Usuário: <input type="text" v-model="username" size="50"><br><br>
       Senha: <input type="password" v-model="password" size="50"><br><br>
-      <button type="button" @click="submit">Entrar</button><br>
-      <p style="color: red">{{error}}</p>
+      <button type="button" @click="submit">Entrar</button><br><br>
+      <p>Ainda não possui cadastro?<a href="cadastro1.html"> Cadastre-se aqui!</a></p><br>
+      <p style="color: whitesmoke">{{error}}</p>
+    </div>
     </div>
     <script>
       var app = new Vue({

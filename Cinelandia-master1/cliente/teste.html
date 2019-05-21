@@ -18,17 +18,24 @@
 <body>
     <ul><br>
         <img class="displayed" src="img/Logo.JPEG" alt="Logo" style="width:400px;">
-        <li><a class="active" href="index.html"> Home </a></li>
-        <li><a href="dados.html"> Sobre os autores </a></li>
-        <li><a href="dados.html"> O que é cinelândia? </a></li>
-        <li><a href="dados.html"> Ajuda </a></li>
-        <li><a href="Conta.html"> Minha conta </a></li>
-        <div id="app">
-                <button class="button" v-if="flagSair" type="button" @click="logout">Sair</button>
-                <button class="button"><a v-if="flagLogin" href="login.html" class="btn btn-warning">Login</a></button>
-            </div>
+        <li><a class="active" href="Index1.html"> Home </a></li>
+        <li><a href="Index2.html"> Sobre os autores </a></li>
+        <li><a href="Index2.html"> O que é cinelândia? </a></li>
+        <li><a href="Index2.html"> Ajuda </a></li>
         <br><br>
     </ul><br>
+    <div class=container>
+        <div id="app">
+            <a v-if="flagSair" href="cadastro1.html" class="btn btn-primary">Inserir</a>
+            <button v-if="flagSair" class="btn btn-danger" type="button" @click="logout">Sair</button>
+            <a v-if="flagLogin" href="login.html" class="btn btn-warning">Login</a>
+            <h3>Lista de Usuários</h3>
+            <ul>
+                <li v-for="usuario in usuarios">
+                    <a :href="'Conta1.html?id='+usuario.id">{{usuario.username}}</a>
+                </li>
+            </ul>
+        </div>
         <ul class="slider">
             <li>
                 <input type="radio" id="slide1" name="slide" checked>

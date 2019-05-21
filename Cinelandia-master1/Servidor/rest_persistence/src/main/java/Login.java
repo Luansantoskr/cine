@@ -66,7 +66,8 @@ public class Login extends HttpServlet {
             User user = UserDAO.getUserByUsername(aux.getUsername());
                        
             if (user != null && user.getPassword().equals(aux.getPassword())) {
-                response.setStatus(200);
+                response.getWriter().print(String.valueOf(user.getId()));
+            	response.setStatus(200);
             } else {
                 response.setStatus(401);
             }

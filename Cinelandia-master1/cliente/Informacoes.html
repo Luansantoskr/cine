@@ -7,7 +7,14 @@
     <meta name="description" content="Free Web tutorials">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Hege Refsnes">
-    <link rel="stylesheet" href="css\Index.css">
+    <link rel="stylesheet" href="css/Index.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/vue-session.js"></script>
+    <script src="js/axios.min.js"></script>
 
 
 
@@ -20,6 +27,7 @@
         <li><a href="dados.html"> Sobre os autores </a></li>
         <li><a href="dados.html"> O que é cinelândia? </a></li>
         <li><a href="dados.html"> Ajuda </a></li>
+        <li><a href="Conta.html"> Minha conta </a></li>
         <br><br>
     </ul><br><br>
 
@@ -49,7 +57,7 @@
             Voltar para busca </a></button>
 
     <button type="button" class="btn btn-primary btn-lg" style="width: 100px; height: 50px"><a href="Comentarios.html">
-                    Adicionar comentário</a></button><br><br><br>
+            Adicionar comentário</a></button><br><br><br>
 
     <table border="0">
         <tr>
@@ -73,6 +81,40 @@
 
 
     </footer>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/users",
+                usuarios: [],
+                flagSair: false,
+                flagLogin: true
+            },
+            created() {
+                if (this.$session.exists()) {
+                    this.flagSair = true;
+                    this.flagLogin = false;
+                }
+                vm = this;
+                axios.get(this.url).then(function (r) {
+                    if (r.data.user.length > 1) {
+                        vm.usuarios = r.data.user;
+                    } else {
+                        vm.usuarios = r.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            methods: {
+                logout() {
+                    this.$session.destroy()
+                    this.flagSair = false;
+                    this.flagLogin = true;
+                }
+            }
+        });
+    </script>
 
 </body>
 

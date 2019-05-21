@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 
-@XmlRootElement(name = "Filmes")
+@XmlRootElement(name = "filme")
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Filmes {
@@ -12,6 +12,10 @@ public class Filmes {
 private int id;
 private String nomefilme;
 private String sinopse;
+
+public Filmes() {
+	
+}
 
 public Filmes(int id, String nomefilme, String sinopse) {
 	super();

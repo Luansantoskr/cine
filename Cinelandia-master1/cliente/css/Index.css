@@ -24,17 +24,14 @@ table {
 }
 
 .button {
-  border: none;
   color: rgb(0, 0, 0);
-  padding: 10px 18px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  font-size: 16px;
   background-color: rgb(179, 43, 31);
-  float: right;
+  border: none;
 }
 
+.strong{
+  text-align: center;
+}
 
 .cor-quatro {
   text-align: center;
@@ -126,27 +123,27 @@ form.solid {
   border-style: solid;
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
 div.container4 {
   height: 10em;
-  position: relative 
+  position: relative
 }
 
-input{
+input {
   color: black;
 }
 
-form {
+.form {
   text-align: center;
   border: 2cm;
   border: solid black;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-right: 320px;
-  margin-left: 80px;
+  margin-right: 200px;
+  margin-left: 200px;
   background-color: rgb(179, 43, 31);
   color: rgb(255, 255, 255);
 }
@@ -168,12 +165,95 @@ form {
   color: white;
 }
 
-h2{
+h2 {
   text-align: center;
 }
 
 IMG.displayed {
   display: block;
   margin-left: auto;
-  margin-right: auto 
+  margin-right: auto
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.slider {
+  display: block;
+  height: 600px;
+  width: 900px;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+}
+
+.slider li {
+  list-style: none;
+  position: absolute;
+}
+
+.slider img {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+}
+
+.slider input {
+  display: none;
+}
+
+.slider label {
+  background-color: #000;
+  bottom: 10px;
+  cursor: pointer;
+  display: block;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+  z-index: 10;
+}
+
+.slider li:nth-child(1) label {
+  left: 10px;
+  animation: cycle 5s linear infinite;
+  -moz-animation: cycle 5s linear infinite;
+  -webkit-animation: cycle 5s linear infinite;
+  -ms-animation: cycle 5s linear infinite;
+  -o-animation: cycle 5s linear infinite;
+}
+
+.slider li:nth-child(2) label {
+  left: 40px;
+  animation: cycletwo 5s linear infinite;
+  -moz-animation: cycletwo 25s linear infinite;
+  -webkit-animation: cycletwo 25s linear infinite;
+  -ms-animation: cycletwo 25s linear infinite;
+  -o-animation: cycletwo 25s linear infinite;
+}
+
+.slider li:nth-child(3) label {
+  left: 70px;
+  animation: cyclethree 5s linear infinite;
+  -moz-animation: cyclethree 25s linear infinite;
+  -webkit-animation: cyclethree 25s linear infinite;
+  -ms-animation: cyclethree 25s linear infinite;
+  -o-animation: cyclethree 25s linear infinite;
+}
+
+.slider img {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.slider li input:checked~img {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.container{
+  text-align: center;
 }

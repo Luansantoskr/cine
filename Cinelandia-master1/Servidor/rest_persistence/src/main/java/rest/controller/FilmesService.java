@@ -25,7 +25,7 @@ import com.sun.jersey.multipart.FormDataParam;
 import rest.dao.FilmesDAO;
 import rest.model.Filmes;
 
-@Path("/Filmes")
+@Path("/filmes")
 public class FilmesService {
 
 	@GET

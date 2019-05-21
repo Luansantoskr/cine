@@ -42,7 +42,7 @@ public class FilmesDAO {
 
 	public static Filmes updateFilmes(int id, String nomefilme, String sinopse, InputStream input) {
 		try {
-			PreparedStatement pStmt = connection.prepareStatement("update Filmes set nomefilme=?, sinpse=? where id=?",
+			PreparedStatement pStmt = connection.prepareStatement("update Filmes set nomefilme=?, sinopse=? where id=?",
 					Statement.RETURN_GENERATED_KEYS);
 			pStmt.setString(1, nomefilme);
 			pStmt.setString(2, sinopse);
@@ -63,7 +63,7 @@ public class FilmesDAO {
 
 	public static void deleteFilmes(int id) {
 		try {
-			PreparedStatement pStmt = connection.prepareStatement("delete from Filmes where id=?");
+			PreparedStatement pStmt = connection.prepareStatement("delete from filmes where id=?");
 			pStmt.setInt(1, id);
 			pStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -75,10 +75,10 @@ public class FilmesDAO {
 		List<Filmes> filmes = new ArrayList<Filmes>();
 		try {
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Filmes order by id");
+			ResultSet rs = stmt.executeQuery("select * from filmes order by id");
 			while (rs.next()) {
-				Filmes Filmes = new Filmes(rs.getInt("id"), rs.getString("nomefilme"), rs.getString("sinopse"));
-				filmes.add(Filmes);
+				Filmes filme = new Filmes(rs.getInt("id"), rs.getString("nomefilme"), rs.getString("sinopse"));
+				filmes.add(filme);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,7 +89,7 @@ public class FilmesDAO {
 
 	public static Filmes getFilmes(int id) {
 		try {
-			PreparedStatement pStmt = connection.prepareStatement("select * from Filmes where id=?");
+			PreparedStatement pStmt = connection.prepareStatement("select * from filmes where id=?");
 			pStmt.setInt(1, id);
 			ResultSet rs = pStmt.executeQuery();
 			if (rs.next()) {
@@ -104,7 +104,7 @@ public class FilmesDAO {
 
 	public static Filmes getFilmesByNomefilme(String nomefilme) {
 		try {
-			PreparedStatement pStmt = connection.prepareStatement("select * from Filmes where nomefilme=?");
+			PreparedStatement pStmt = connection.prepareStatement("select * from filmes where nomefilme=?");
 			pStmt.setString(1, nomefilme);
 			ResultSet rs = pStmt.executeQuery();
 			if (rs.next()) {
