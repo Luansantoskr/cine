@@ -31,27 +31,17 @@
         <br><br>
     </ul><br><br>
 
-    <h3> Capitã Marvel </h3>
-
-    <div>
-        <table>
-            <tr>
-                <h3> Sinopse do filme: </h3>
-                <td> <img src="img\capita.jpg" alt="" height="370" width="250"></button> </td>
-                <td> Carol Danvers (Brie Larson) é uma ex-agente da Força Aérea norte-americana, que, sem se lembrar de
-                    sua vida
-                    na Terra, é recrutada pelos Kree para fazer parte de seu exército de elite.
-                    Inimiga declarada dos Skrull, ela acaba voltando ao seu planeta de origem para impedir uma invasão
-                    dos metaformos, e assim vai acabar
-                    descobrindo a verdade sobre si, com a ajuda do agente Nick Fury (Samuel L. Jackson) e da gata Goose.
-                </td>
-            </tr>
-        </table>
-        <p>
-
-            <br><br>
-
-    </div><br><br><br><br>
+    <div class=container>
+        <div id="apc">
+            <h3>Filme:</h3>
+            <div v-if="flag">
+                <img :src="'img/'+filme.id+'?'+new Date().getTime()" width="300" height="300">
+                <p>{{filme.nomefilme}}</p>
+                <p>{{filme.sinopse}}</p>
+                <button class="btn btn-danger" type="button" @click="deleteUser">Excluir</button>
+            </div>
+        </div>
+    </div>
 
     <button type="button" class="btn btn-primary btn-lg" style="width: 100px; height: 50px"><a href="busca.html">
             Voltar para busca </a></button>
@@ -111,6 +101,36 @@
                     this.$session.destroy()
                     this.flagSair = false;
                     this.flagLogin = true;
+                }
+            }
+        });
+    </script>
+    <script>
+        var apc = new Vue({
+            el: "#apc",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/filmes",
+                filme: {},
+                flag: false,
+            },
+                created() {
+                    vm = this;
+                    id = vm.$session.get("id");
+                    axios.get(this.url + "/" + id).then(function (r) {
+                        vm.filme = r.data;
+                        vm.flag = true;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            methods: {
+                deleteUser() {
+                    axios.delete(this.url + "/" + this.filme.id).then(function (r) {
+                        console.log(r);
+                        window.location.replace('index.html')
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 }
             }
         });

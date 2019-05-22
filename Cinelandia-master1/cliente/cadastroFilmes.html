@@ -27,24 +27,19 @@
     </ul><br><br>
     <div class=container>
         <div id="app">
-            <div v-if="flag">
-                <h3>Inserir filme</h3><br>
-                <div class="form-group">
-                    <label for="nomefilme">Nome do filme: </label>
-                    <input class="form-control" type="text" v-model="nomefilme">
-                </div><br>
-                <div class="form-group">
-                    <label for="sinopse">Sinopse: </label>
-                    <input class="form-control" type="text" v-model="sinopse">
-                </div><br><br>
-                <label class="btn btn-primary">
-                    Escolher arquivo <input type="file" id="file" ref="file" name="image" @change="handleFileUpload()"
-                        hidden>
-                </label><br>
-                <button class="btn btn-primary" type="button" @click="submit">Inserir</button>
-                <p style="color: red">{{error}}</p>
-            </div>
-        </div>
+            <h3>Inserir filme</h3>
+            <div class="form-group">
+                <label for="nomefilme">Nome do filme: </label>
+                <input class="form-control" type="text" v-model="nomefilme" size="50">
+            </div><br>
+            <div class="form-group">
+                <label for="sinopse">Sinopse: </label>
+                <input class="form-control" type="text" v-model="sinopse" size="50">
+            </div><br>
+            <label class="btn btn-primary">
+                    Escolher arquivo <input type="file" id="file" ref="file" name="image" @change="handleFileUpload()" hidden>
+            </label><br><br>
+            <button class="btn btn-primary" type="button" @click="submit">Inserir</button>
         </div>
         <table border="0">
             <tr>
@@ -78,13 +73,6 @@
                     flag: false,
                     error: null
                 },
-                created() {
-                    if (!this.$session.exists()) {
-                        //window.location.replace("Categorias.html");
-                    } else {
-                        this.flag = true;
-                    }
-                },
                 methods: {
                     submit() {
                         let formData = new FormData();
@@ -102,7 +90,7 @@
                         ).then(function (r) {
                             if (r.status == 200) {
                                 console.log(r.data);
-                                window.location.replace("Categorias.html");
+                                window.location.replace("informacoes.html");
                             }
                         }).catch(function (error) {
                             console.log(error.response.status);
